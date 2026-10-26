@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập Mảng - BÀI TẬP JS BUỔI 7 - 8</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="relative overflow-hidden bg-slate-900 text-white">
+    <!-- Họa tiết nền -->
+    <div class="absolute inset-0 opacity-20 [background-image:radial-gradient(#6366f1_1px,transparent_1px)] [background-size:22px_22px]"></div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-indigo-600 rounded-full blur-3xl opacity-30"></div>
+
+    <!-- Thanh điều hướng -->
+    <nav class="relative max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 font-bold">
+        <span class="grid place-items-center w-9 h-9 rounded-lg bg-yellow-400 text-slate-900 font-mono text-sm">JS</span>
+        <span>CyberSoft 98 - <span class="text-slate-400 font-normal">Fullstack</span></span>
+      </a>
+      <div class="hidden sm:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#nhap-mang" class="hover:text-white">Nhập mảng</a>
+        <a href="#bai-tap" class="hover:text-white">10 bài tập</a>
+        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Buổi 7-8</span>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="relative max-w-6xl mx-auto px-4 pt-6 pb-12 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="text-yellow-400 font-mono text-sm">// Bài tập về nhà</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold mt-2 leading-tight">
+          Xử lý <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-300">Mảng</span> với JavaScript
+        </h1>
+        <p class="text-slate-300 mt-4 max-w-md">Nhập các số nguyên vào mảng, sau đó chọn chức năng cần thực hiện và xem kết quả ngay trên trang.</p>
+        <div class="flex flex-wrap gap-2 mt-6 text-xs font-medium">
+        
+        </div>
+      </div>
+
+      <!-- Khung code minh họa -->
+      <div class="hidden md:block bg-slate-800/80 backdrop-blur rounded-xl ring-1 ring-white/10 shadow-2xl">
+        <div class="flex gap-1.5 px-4 py-3 border-b border-white/10">
+          <span class="w-3 h-3 rounded-full bg-red-400"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+          <span class="w-3 h-3 rounded-full bg-green-400"></span>
+          <span class="ml-3 text-xs text-slate-400 font-mono">main.js</span>
+        </div>
+        <pre class="p-5 text-sm font-mono leading-relaxed overflow-x-auto"><span class="text-pink-400">var</span> mangSo = [<span class="text-orange-300">5</span>, <span class="text-orange-300">-3</span>, <span class="text-orange-300">8</span>, <span class="text-orange-300">7</span>];
+<span class="text-pink-400">var</span> tong = <span class="text-orange-300">0</span>;
+<span class="text-pink-400">for</span> (<span class="text-pink-400">var</span> i = <span class="text-orange-300">0</span>; i &lt; mangSo.length; i++) {
+  <span class="text-pink-400">if</span> (mangSo[i] &gt; <span class="text-orange-300">0</span>) tong += mangSo[i];
+}
+<span class="text-slate-500">// tong = 20</span></pre>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-8">
+
+    <!-- NHẬP MẢNG -->
+    <section id="nhap-mang" class="scroll-mt-6 bg-white rounded-2xl shadow p-6">
+      <h2 class="text-xl font-semibold mb-4">Nhập mảng số nguyên</h2>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input id="inputSo" type="number" placeholder="Nhập số nguyên, ví dụ: 5"
+          class="flex-1 border border-slate-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <button id="btnThemSo"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg px-5 py-2">Thêm số</button>
+        <button id="btnXoaMang"
+          class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium rounded-lg px-5 py-2">Xóa mảng</button>
+      </div>
+      <p id="thongBaoNhap" class="text-red-600 text-sm mt-2"></p>
+      <div class="mt-4 bg-slate-50 border border-dashed border-slate-300 rounded-lg p-4">
+        <span class="text-slate-500 text-sm">Mảng hiện tại:</span>
+        <div id="hienThiMang" class="font-mono text-lg mt-1">[ ]</div>
+      </div>
+    </section>
+
+    <!-- CÁC CHỨC NĂNG -->
+    <section id="bai-tap" class="scroll-mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- 1 -->
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col">
+        <h3 class="font-semibold"><span class="text-indigo-600">Bài 1.</span> Tổng các số dương</h3>
+        <button id="btnBai1" class="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2">Tính tổng</button>
+        <div id="ketQua1" class="mt-4 bg-indigo-50 text-indigo-900 rounded-lg px-4 py-3 min-h-[3rem]"></div>
+      </div>
+
+      <!-- 2 -->
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col">
+        <h3 class="font-semibold"><span class="text-indigo-600">Bài 2.</span> Đếm số dương</h3>
+        <button id="btnBai2" class="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2">Đếm</button>
+        <div id="ketQua2" class="mt-4 bg-indigo-50 text-indigo-900 rounded-lg px-4 py-3 min-h-[3rem]"></div>
+      </div>
+
+      <!-- 3 -->
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col">
+        <h3 class="font-semibold"><span class="text-indigo-600">Bài 3.</span> Tìm số nhỏ nhất</h3>
+        <button id="btnBai3" class="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2">Tìm</button>
+        <div id="ketQua3" class="mt-4 bg-indigo-50 text-indigo-900 rounded-lg px-4 py-3 min-h-[3rem]"></div>
+      </div>
+
+      <!-- 4 -->
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col">
+        <h3 class="font-semibold"><span class="text-indigo-600">Bài 4.</span> Tìm số dương nhỏ nhất</h3>
+        <button id="btnBai4" class="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2">Tìm</button>
+        <div id="ketQua4" class="mt-4 bg-indigo-50 text-indigo-900 rounded-lg px-4 py-3 min-h-[3rem]"></div>
+      </div>
+
+      <!-- 5 -->
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col">
+        <h3 class="font-semibold"><span class="text-indigo-600">Bài 5.</span> Tìm số chẵn cuối cùng</h3>
+        <p class="text-sm text-slate-500 mt-1">Không có số chẵn thì trả về -1.</p>
+        <button id="btnBai5" class="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2">Tìm</button>
+        <div id="ketQua5" class="mt-4 bg-indigo-50 text-indigo-900 rounded-lg px-4 py-3 min-h-[3rem]"></div>
+      </div>
+
+      <!-- 6 -->
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col">
+        <h3 class="font-semibold"><span class="text-indigo-600">Bài 6.</span> Đổi chỗ 2 giá trị theo vị trí</h3>
+        <p class="text-sm text-slate-500 mt-1">Vị trí tính từ 0.</p>
+        <div class="flex gap-3 mt-4">
+          <input id="viTri1" type="number" placeholder="Vị trí 1"
+            class="w-1/2 border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <input id="viTri2" type="number" placeholder="Vị trí 2"
+            class="w-1/2 border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        </div>
+        <button id="btnBai6" class="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2">Đổi chỗ</button>
+        <div id="ketQua6" class="mt-4 bg-indigo-50 text-indigo-900 rounded-lg px-4 py-3 min-h-[3rem]"></div>
+      </div>
+
+      <!-- 7 -->
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col">
+        <h3 class="font-semibold"><span class="text-indigo-600">Bài 7.</span> Sắp xếp tăng dần</h3>
+        <button id="btnBai7" class="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2">Sắp xếp</button>
+        <div id="ketQua7" class="mt-4 bg-indigo-50 text-indigo-900 rounded-lg px-4 py-3 min-h-[3rem]"></div>
+      </div>
+
+      <!-- 8 -->
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col">
+        <h3 class="font-semibold"><span class="text-indigo-600">Bài 8.</span> Tìm số nguyên tố đầu tiên</h3>
+        <p class="text-sm text-slate-500 mt-1">Không có số nguyên tố thì trả về -1.</p>
+        <button id="btnBai8" class="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2">Tìm</button>
+        <div id="ketQua8" class="mt-4 bg-indigo-50 text-indigo-900 rounded-lg px-4 py-3 min-h-[3rem]"></div>
+      </div>
+
+      <!-- 9 -->
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col">
+        <h3 class="font-semibold"><span class="text-indigo-600">Bài 9.</span> Đếm số nguyên trong mảng số thực</h3>
+        <div class="flex gap-3 mt-4">
+          <input id="inputSoThuc" type="number" step="any" placeholder="Nhập số thực, ví dụ: 2.5"
+            class="flex-1 border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <button id="btnThemSoThuc" class="bg-slate-700 hover:bg-slate-800 text-white rounded-lg px-4 py-2">Thêm</button>
+        </div>
+        <div class="mt-3 text-sm text-slate-500">Mảng số thực: <span id="hienThiMangThuc" class="font-mono text-slate-800">[ ]</span></div>
+        <button id="btnBai9" class="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2">Đếm số nguyên</button>
+        <div id="ketQua9" class="mt-4 bg-indigo-50 text-indigo-900 rounded-lg px-4 py-3 min-h-[3rem]"></div>
+      </div>
+
+      <!-- 10 -->
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col">
+        <h3 class="font-semibold"><span class="text-indigo-600">Bài 10.</span> So sánh số lượng số dương và số âm</h3>
+        <button id="btnBai10" class="mt-4 self-start bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2">So sánh</button>
+        <div id="ketQua10" class="mt-4 bg-indigo-50 text-indigo-900 rounded-lg px-4 py-3 min-h-[3rem]"></div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="text-center text-sm text-slate-500 py-6">Hv.Trần Văn Hạnh - Cybersoft</footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
